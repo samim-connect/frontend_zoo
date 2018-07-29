@@ -1,0 +1,6 @@
+1. To get the location push working we need to change the nginx config in the sites available 
+
+location / {
+    ..
+    try_files $uri /index.html;
+}

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row"></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="">
+                <div class="login-form">
+                    <form ng-hide="hide_login_form">
+                        <div ng-if="errors" class="alert alert-warning" role="alert">
+                            <span ng-repeat="error in error_list">{{ error }}</span>
+                        </div>
+                        <h2 class="text-center">Register</h2>   
+                        <div class="form-group">
+                            <input type="text" ng-model="user.username" class="form-control form-input" name="username" placeholder="Username" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-input" name="password" placeholder="Email" required="required" ng-model="user.email">
+                        </div> 
+                        <div class="form-group">
+                            <input type="password" class="form-control form-input" name="username" placeholder="Password" required="required" ng-model="user.password1">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-input" name="password" placeholder="Re-enter Password" required="required" ng-model="user.password2">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="small-button" ng-click="submit_usercreation_form()">Register</button>
+                        </div>
+                        <span>Already have an account?</span><a href="/login">Sign In</a>        
+                    </form>
+                    <div class="alert alert-success" role="alert" ng-show="confim_submit"> 
+                        <strong>Well done!</strong> You have created your zoobay account. 
+                        Shop @<a ng-href="/">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

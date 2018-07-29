@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="mvapp">
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<base href="/">
+	<title>HomePage</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByADSCZsUnH_UTg3SpFB0Yxq5DuP_ugdo&libraries=places"></script>
+
+    <meta name="google-signin-client_id" content="175219282520-16451atdb1uhrp2tdqi4epkk6d1jlpm0.apps.googleusercontent.com">
+	<script src="assets/js/app.js"></script>
+</head>
+
+<body>
+	<ng-include src="'templates/header.html'"></ng-include>
+	<ng-view></ng-view>
+	<ng-include src="'templates/footer.html'"></ng-include>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="page-header text-center" style="border-bottom: none;">
+			<h1>ALL CATEGORIES</h1>
+		</div>
+		<div class="row">
+			<div class="col-sm-3" ng-repeat="category in category_list">
+				<div class="panel panel-default">
+				<div class="panel-body" id="category-heading">{{ category.title }}</div>
+				</div>
+				<div class="sub-category-list sub-cat-list">
+					<div class="list-group" ng-repeat="subcategory in category.sub_categories">
+						<a type="button" href="/category/{{ subcategory.id }}">{{ subcategory.title }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

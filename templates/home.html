@@ -1,0 +1,315 @@
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+</script>
+<div class="container-fluid">
+    <div class="col-sm-3 hidden-xs">
+        <ul class="nav nav-sidebar">
+            <li ng-repeat="sub_cat in sub_categories"><a href="/category/{{sub_cat.id}}">{{ sub_cat.title }}</a></li>
+            <li><a href="/categories" class="pagination">View all categories</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-3 visible-xs">
+        <ul class="nav nav-sidebar">
+            <li ng-repeat="sub_cat in sub_categories"><a href="/category/{{sub_cat.id}}">{{ sub_cat.title }}</a></li>
+            <li><a ng-href="/categories" class="pagination">View all categories</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-9 home-catalog">
+        <!-- <div ng-show="showLoader" class="text-center"> -->
+        <!-- <img src="assets/images/spinner-loop.gif" style="height: 50px; width: 50px;"> <!-- or any other spinner -->
+        <!-- </div> -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="https://hiptruck-files.imgix.net/cms-files/b6165b83-38ff-4dd7-8da2-0f04f642a97e/ExperienceStore_Carousel-Destop.png?auto=format&lossless=0&cs=srgb&w=2000&fm=jpg">
+                </div>
+<!--                 <div class="item" ng-repeat="image in carosal_slider" ng-if="$index > 0">
+                    <img src="{{ image.image_url }}">
+                </div> -->
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <br>
+        <h2>Featured services (Comming Soon)</h2>
+        <br>
+        <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel1" data-interval="1000">
+            <div class="MultiCarousel-inner" style="transform: translateX(0px); width: 3040px;">
+                <div class="item" style="width: 190px;">
+                    <div class="pad15">
+                        <p class="lead">Plumbers</p>
+                        <p>₹ 1</p>
+                        <p>₹ 6000</p>
+                        <p>50% off</p>
+                    </div>
+                </div>
+                <div class="item" style="width: 190px;">
+                    <div class="pad15">
+                        <p class="lead">Fooding</p>
+                        <p>₹ 1</p>
+                        <p>₹ 6000</p>
+                        <p>50% off</p>
+                    </div>
+                </div>
+                <div class="item" style="width: 190px;">
+                    <div class="pad15">
+                        <p class="lead">Health</p>
+                        <p>₹ 1</p>
+                        <p>₹ 6000</p>
+                        <p>50% off</p>
+                    </div>
+                </div>
+                <div class="item" style="width: 190px;">
+                    <div class="pad15">
+                        <p class="lead">Refreshments</p>
+                        <p>₹ 1</p>
+                        <p>₹ 6000</p>
+                        <p>50% off</p>
+                    </div>
+                </div>
+                <div class="item" style="width: 190px;">
+                    <div class="pad15">
+                        <p class="lead">Service</p>
+                        <p>₹ 1</p>
+                        <p>₹ 6000</p>
+                        <p>50% off</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary leftLst over">&lt;</button>
+            <button class="btn btn-primary rightLst">&gt;</button>
+        </div>
+        <div class="page-header">
+            <h2>Latest Products</h2>
+        </div>
+        <div class="row" ng-if="featured_products">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4" ng-repeat="product in featured_products">
+                <h3>{{ product.title }}</h3>
+                <a href="/product/{{ product.id }}" class="thumbnail">
+                <img src="assets/{{ product.image_url }}" alt="...">
+                </a>
+                <p>{{ product.description }}</p>
+                <p>Price : Rs {{ product.price }}</p>
+            </div>
+        </div>
+        <div class="row" ng-if="!featured_products">
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                <h3>No new product found!</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade text-center" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background: linear-gradient(45deg,#2DBD9D 0%,#72DE93 100%);">
+                <h4 class="modal-title" style="color: #fff;">Select your location</h4>
+            </div>
+            <div class="modal-body">
+                <p>Get products and services near to you location.</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="search-bar" placeholder="Select your location" required="required" id="searchTextField" type="text" size="50" style="margin: auto; width: 80%;">
+            </div>
+            <div style="display: none;">
+                <p id="lat"></p>
+                <p id="long"></p>
+                <p id="city"></p>
+                <p id="state"></p>
+                <p id="country"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center join-zobbay">
+    <h4><a href="/partner-registration/"> Own a shop/small business? Join zobbay today.</a></h4>
+</div>
+
+<style>
+    .pac-container {
+        z-index: 10000 !important;
+    }
+</style>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var itemsMainDiv = ('.MultiCarousel');
+    var itemsDiv = ('.MultiCarousel-inner');
+    var itemWidth = "";
+
+    $('.leftLst, .rightLst').click(function () {
+        var condition = $(this).hasClass("leftLst");
+        if (condition)
+            click(0, this);
+        else
+            click(1, this)
+    });
+
+    ResCarouselSize();
+
+
+
+
+    $(window).resize(function () {
+        ResCarouselSize();
+    });
+
+    //this function define the size of the items
+    function ResCarouselSize() {
+        var incno = 0;
+        var dataItems = ("data-items");
+        var itemClass = ('.item');
+        var id = 0;
+        var btnParentSb = '';
+        var itemsSplit = '';
+        var sampwidth = $(itemsMainDiv).width();
+        var bodyWidth = $('body').width();
+        $(itemsDiv).each(function () {
+            id = id + 1;
+            var itemNumbers = $(this).find(itemClass).length;
+            btnParentSb = $(this).parent().attr(dataItems);
+            itemsSplit = btnParentSb.split(',');
+            $(this).parent().attr("id", "MultiCarousel" + id);
+
+
+            if (bodyWidth >= 1200) {
+                incno = itemsSplit[3];
+                itemWidth = sampwidth / incno;
+            }
+            else if (bodyWidth >= 992) {
+                incno = itemsSplit[2];
+                itemWidth = sampwidth / incno;
+            }
+            else if (bodyWidth >= 768) {
+                incno = itemsSplit[1];
+                itemWidth = sampwidth / incno;
+            }
+            else {
+                incno = itemsSplit[0];
+                itemWidth = sampwidth / incno;
+            }
+            $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+            $(this).find(itemClass).each(function () {
+                $(this).outerWidth(itemWidth);
+            });
+
+            $(".leftLst").addClass("over");
+            $(".rightLst").removeClass("over");
+
+        });
+    }
+
+
+    //this function used to move the items
+    function ResCarousel(e, el, s) {
+        var leftBtn = ('.leftLst');
+        var rightBtn = ('.rightLst');
+        var translateXval = '';
+        var divStyle = $(el + ' ' + itemsDiv).css('transform');
+        var values = divStyle.match(/-?[\d\.]+/g);
+        var xds = Math.abs(values[4]);
+        if (e == 0) {
+            translateXval = parseInt(xds) - parseInt(itemWidth * s);
+            $(el + ' ' + rightBtn).removeClass("over");
+
+            if (translateXval <= itemWidth / 2) {
+                translateXval = 0;
+                $(el + ' ' + leftBtn).addClass("over");
+            }
+        }
+        else if (e == 1) {
+            var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+            translateXval = parseInt(xds) + parseInt(itemWidth * s);
+            $(el + ' ' + leftBtn).removeClass("over");
+
+            if (translateXval >= itemsCondition - itemWidth / 2) {
+                translateXval = itemsCondition;
+                $(el + ' ' + rightBtn).addClass("over");
+            }
+        }
+        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+    }
+
+    //It is used to get some elements from btn
+    function click(ell, ee) {
+        var Parent = "#" + $(ee).parent().attr("id");
+        var slide = $(Parent).attr("data-slide");
+        ResCarousel(ell, Parent, slide);
+    }
+
+});
+</script>
+
+<script type="text/javascript">
+
+    initialize();
+
+    var autocomplete;
+    var opts = {
+      types: ['(cities)']
+    };
+
+    function initialize() {
+        var input = document.getElementById('searchTextField');
+        autocomplete = new google.maps.places.Autocomplete(input, opts);
+        autocomplete.addListener('place_changed', fillInAddress);
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        var lat = place.geometry.location.lat();
+        var long = place.geometry.location.lng();
+        var address_obj = get_address_details(place.address_components);
+        $("#lat").text(lat);
+        $("#long").text(long);
+        $("#city").text(address_obj.city);
+        $("#state").text(address_obj.state);
+        $("#country").text(address_obj.country);
+        window.localStorage.setItem('lat', lat);
+        window.localStorage.setItem('lng', long);
+        window.localStorage.setItem('city', address_obj.city);
+        window.localStorage.setItem('state', address_obj.state);
+        window.localStorage.setItem('country', address_obj.country);
+        window.location.reload();
+    }
+    function get_address_details(place){
+        var state;
+        var city;
+        var country;
+
+        for (var i=0; i<place.length; i++){
+
+            if (place[i].types.indexOf('country') > -1){
+                country = place[i].long_name;
+            }
+            if (place[i].types.indexOf('administrative_area_level_1') > -1){
+                state = place[i].long_name;
+            }
+        }
+        var city = place[0].long_name;
+        var place_obj = {
+            'city': city,
+            'state': state,
+            'country': country
+        }
+        return place_obj;
+    }
+</script>

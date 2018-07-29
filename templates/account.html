@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4 style="color: #fff">
+						Credential Information
+					</h4>
+				</div>
+				<div class="panel-footer">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<h4>Username: </h4>
+							{{ user.username }}
+						</li>
+						<li class="list-group-item">
+							<h4>Email: </h4>
+							{{ user.email }}
+						</li>
+						<li class="list-group-item">
+							<h4>Phone Number: </h4>
+							{{ user.email }}
+						</li>
+						<li class="list-group-item">
+							<a href="" style="color: #1ba975fa">Change Password</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4 style="color: #fff">
+						Favourites & Orders
+					</h4>
+				</div>
+				<div class="panel-footer">
+					<ul class="list-group">
+						<a href="/cart" class="btn btn-success">View wishlist</a><br><br>
+						<a href="/cart" class="btn btn-success">View orders</a><br><br>
+						<a href="/cart" class="btn btn-success">View my cart</a><br><br>
+						<a href="/logout" class="btn btn-info">logout</a><br><br>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

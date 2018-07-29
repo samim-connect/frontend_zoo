@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="col-12">
+        <div class="card card-plain">
+            <!----> 
+            <div class="card-header text-center">
+                <h4 class="card-title">Cart Items</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <th>No</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>quantity</th>
+                            <th>Remove from cart</th>
+                        </thead>
+                        <tbody ng-repeat="item in items">
+                            <tr>
+                                <td>{{ $index }}</td>
+                                <td>{{ item.title }}</td>
+                                <td>Rs. {{ item.price }}</td>
+                                <td>
+                                    <select class="form-control" id="sel1">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                <button type="button" class="btn btn-default btn-sm"
+                                ng-click="remove_item(item)">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove 
+                                </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!---->
+        </div>
+    </div>
+</div>

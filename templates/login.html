@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row"></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="">
+                <div class="login-form">
+                    <form ng-hide="hide_login_form">
+                        <div ng-if="errors" class="alert alert-warning" role="alert">
+                            <span>{{ errors_message }}</span>
+                        </div>
+                        <h2 class="text-center">Login</h2>   
+                        <div class="form-group">
+                            <input type="text" class="form-control form-input" name="username" placeholder="Username" required="required" ng-model="login.email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-input" name="password" placeholder="Password" required="required" ng-model="login.password">
+                        </div>        
+                        <div class="form-group">
+                            <button type="submit" class="small-button" ng-click="submit_login_form()">Sign in</button>
+                        </div>
+                        <span>Already have an account?</span> &nbsp <a href="/user-registration">Sign up</a> 
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

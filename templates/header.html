@@ -1,0 +1,35 @@
+<div class="container-fluid nav-component" ng-controller="header_controller">
+	<div class="panel panel-default nav-cover">  
+		<div class="panel-body nav-main">
+			<div class="row" ng-switch="show_log_out">
+				<div class="col-sm-6"> 
+					<a href="/" style="padding: none;"><img src="assets/media/logo.png" class="hidden-xs"></a>
+					<a href="/" style="padding: none;"><img src="assets/media/logo.png" class="visible-xs" style="padding: none;"></a>				
+				</div>
+				<div class="col-sm-6 text-center" ng-show="show_login">
+					<div class="btn-group login-button-class">
+						<a href="/user-registration" class="btn btn-success">Sign up</a>
+						&nbsp
+						<a href="/login" class="btn btn-success">Login</a>
+					</div>					
+				</div>
+				<div class="col-sm-6 text-center" ng-show="show_account">
+					<div class="btn-group login-button-class">
+						<a href="/cart" class="btn btn-success">Cart</a>
+						&nbsp
+						<a href="/account" class="btn btn-success">Account</a>
+					</div>					
+				</div>
+				<div class="col-sm-6 text-center" ng-show="show_dashboard">
+					<div class="btn-group login-button-class">
+						<a href="/dashboard" class="btn btn-success">Dashboard</a>
+						&nbsp
+					</div>					
+				</div>						
+			</div> 
+		</div>
+		<div class="panel-heading text-center shadow-bottom">
+			<input class="search-bar" type="text" name="search" placeholder="Search..">
+		</div> 
+	</div>		
+</div>

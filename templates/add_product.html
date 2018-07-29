@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="">
+                <div class="">
+                    <form enctype="multipart/form-data" id="upload-file" ng-hide="product_created" ng-submit="add_product()">
+                        <div ng-if="show_errors" class="alert alert-warning" role="alert">
+                            <span ng-repeat="error in errors">{{ error }}</span>
+                        </div>
+                        <h2 class="text-center">Hey {{ user.username }} add your product here!</h2>
+                        <br>   
+                        <div class="form-group">
+                            <label for="ex1">Add Product heading</label>
+                            <input type="text" class="form-control form-input" name="heading" placeholder="" required="required" ng-model="product.title">
+                        </div>
+                        <div class="form-group">
+                            <label for="ex1">Add Product description</label>
+                            <textarea type="text" class="form-control form-input input-lg" name="" placeholder="" required="required" ng-model="product.description" rows="4"></textarea>
+                        </div> 
+                        <div class="form-group">
+                            <label for="ex1">Add Price</label>
+                            <input type="text" class="form-control form-input" name="" placeholder="" required="required" ng-model="product.price">
+                        </div> 
+                        <div class="form-group">
+                            <label for="ex1">Select a category</label>
+                            <select ng-model="product.category" ng-options="category.title for category in sub_categories | orderBy:'name'" class="form-control form-input" required>
+                                <option value="">Please select</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ex1">Stock remaining</label>
+                            <input type="text" class="form-control form-input" name="" placeholder="" required="required" ng-model="product.in_stock">
+                        </div>
+                        <div class="form-group">
+                            <label for="ex1">Add a photo</label>
+                            <input type="file" name="file" file-model="myFile" formenctype="multipart/form-data"/>
+                        </div>
+                        <p>{{ files }}</p>        
+                        <div class="form-group">
+                            <button type="submit" class="small-button">Create Product</button>
+                        </div>
+                    </form>
+                    <h3 ng-show="image_message">Uploading image ..</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

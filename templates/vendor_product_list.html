@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-12">
+        <div class="card card-plain">
+            <div class="card-header text-center">
+                <h4 class="card-title">Your Products</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <th>No</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Delete</th>
+                        </thead>
+                        <tbody ng-repeat="item in product_list">
+                            <tr>
+                                <td>{{ $index }}</td>
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.description }}</td>
+                                <td>Rs. {{ item.price }}</td>
+                                <td>{{ item.in_stock }} left</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" ng-click="remove_product(item)">Delete</button>
+                                </td>
+                                <!-- <td></td> -->
+                                <!-- <td> -->
+<!--                                 <button type="button" class="btn btn-default btn-sm"
+                                ng-click="remove_item(item)">
+                                    <span class="glyphicon glyphicon-remove"></span> Remove 
+                                </button> -->
+                                <!-- </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!---->
+        </div>
+    </div>
+</div>

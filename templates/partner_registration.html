@@ -1,0 +1,103 @@
+<script type="text/javascript">
+
+    initialize();
+
+    var autocomplete;
+    var opts = {
+      types: ['(cities)']
+    };
+
+    function initialize() {
+        var input = document.getElementById('searchTextField');
+        autocomplete = new google.maps.places.Autocomplete(input, opts);
+        autocomplete.addListener('place_changed', fillInAddress);
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        var lat = place.geometry.location.lat();
+        var long = place.geometry.location.lng();
+        var address_obj = get_address_details(place.address_components);
+        $("#lat").text(lat);
+        $("#long").text(long);
+        $("#city").text(address_obj.city);
+        $("#state").text(address_obj.state);
+        $("#country").text(address_obj.country);
+    }
+    function get_address_details(place){
+        var state;
+        var city;
+        var country;
+
+        for (var i=0; i<place.length; i++){
+
+            if (place[i].types.indexOf('country') > -1){
+                country = place[i].long_name;
+            }
+            if (place[i].types.indexOf('administrative_area_level_1') > -1){
+                state = place[i].long_name;
+            }
+        }
+        var city = place[0].long_name;
+        var place_obj = {
+            'city': city,
+            'state': state,
+            'country': country
+        }
+        return place_obj;
+    }
+</script>
+<div class="container">
+    <div class="row"></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 shadow-card">
+            <div class="">
+                <div class="login-form">
+                    <form ng-hide="hide_login_form">
+                        <div ng-if="errors" class="alert alert-warning" role="alert">
+                            <span ng-repeat="error in error_list">{{ error }} &nbsp</span>
+                        </div>
+                        <h2 class="text-center">Become a zoobay Partner</h2>   
+                        <div class="form-group">
+                            <input type="text" ng-model="user.username" class="form-control form-input" name="username" placeholder="Username" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" ng-model="user.phone_number" class="form-control form-input" name="phone_number" placeholder="Phone number" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-input" name="email" placeholder="Email" required="required" ng-model="user.email">
+                        </div> 
+                        <div class="form-group">
+                            <input type="password" class="form-control form-input" name="username" placeholder="Password" required="required" ng-model="user.password1">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-input" name="password" placeholder="Re-enter Password" required="required" ng-model="user.password2">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-input" name="password" placeholder="Select your location" required="required" id="searchTextField" type="text" size="50">
+                        </div>
+                        <div style="display: none;">
+                            <p id="lat"></p>
+                            <p id="long"></p>
+                            <p id="city"></p>
+                            <p id="state"></p>
+                            <p id="country"></p>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="small-button" ng-click="submit_usercreation_form()">Register</button>
+                        </div>
+                        <span style="color: #fff">Already have an account?</span><a href="/login" style="color: #fff">Sign In</a>        
+                    </form>
+                    <div class="alert alert-success" role="alert" ng-show="confim_submit"> 
+                        <strong>Well done!</strong> You are now a zobbay partner. To confirm your account please follow the link send to you mail!.  
+                        Shop @<a ng-href="/">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
