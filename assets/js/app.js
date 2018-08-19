@@ -67,7 +67,7 @@ mvapp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
 }]);
 
 mvapp.controller("homecontroller", function($scope, $http, $window, $location){
-	var sub_cat_url = hostname + '/sub-categories/'
+	var cat_url = hostname + '/categories/'
 	var carosal_url = hostname + '/carosal/'
 	var product_url = hostname + '/product/'
 
@@ -78,17 +78,25 @@ mvapp.controller("homecontroller", function($scope, $http, $window, $location){
 	if (lat != null && lng != null && city != null) {
 		product_url += '?lat=' + lat + '&lng=' + lng + '&city=' + city
 	}
-    console.log(product_url);
+
 	$scope.showLoader = true;
 	$http({
-		url: sub_cat_url,
+		url: cat_url,
 		method: "GET",
 		params : {}
 	}).then(function(response){
 		$scope.showLoader = false;
-		$scope.sub_categories = response.data
+		$scope.categories = response.data;
+		console.log($scope.categories);
 	}).catch(function(response){
+		console.log('Something went wrong.!')
 	});
+
+	$scope.showSubCategories = function(ev, id) {
+		ev.preventDefault();
+		var markup_id = 'show_sub_cat_' + id;
+		$scope['show_sub_cat_' + id] = true;
+	}
 
 	$http({
 		url: carosal_url,

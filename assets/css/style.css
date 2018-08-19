@@ -160,3 +160,13 @@ ul {
 .MultiCarousel .rightLst { right:0; }
 .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
 
+
+.animate-enter {
+-webkit-transition: 1s linear all; /* Chrome */
+transition: 1s linear all;
+opacity: 0;
+}
+ 
+.animate-enter.animate-enter-active {
+opacity: 1;
+}
