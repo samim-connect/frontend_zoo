@@ -170,3 +170,21 @@ opacity: 0;
 .animate-enter.animate-enter-active {
 opacity: 1;
 }
+
+.sub_cat_id {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sub_cat_id:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.sub_cat_id:active {
+    color: #fff;
+    text-decoration: none;
+}
+.sub_cat_id:focus {
+    color: #fff;
+    text-decoration: none;
+}

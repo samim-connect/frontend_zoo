@@ -125,6 +125,14 @@ mvapp.controller("homecontroller", function($scope, $http, $window, $location){
 mvapp.controller("all_category_controller", function($scope, $http){
 
 	var url = hostname + '/categories/'
+
+	$scope.showSubCategories = function(ev, id) {
+		ev.preventDefault();
+		console.log(id);
+		var markup_id = 'show_sub_cat_' + id;
+		$scope['show_sub_cat_' + id] = true;
+	}
+    
 	$http({
 		url: url,
 		method: "GET",

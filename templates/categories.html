@@ -6,13 +6,17 @@
 		<div class="row">
 			<div class="col-sm-3" ng-repeat="category in category_list">
 				<div class="panel panel-default">
-				<div class="panel-body" id="category-heading">{{ category.title }}</div>
+				<div class="panel-body" id="category-heading">
+					<a href="#" ng-click="showSubCategories($event, category.id)" class="sub_cat_id">{{ category.title }}</a>
 				</div>
-				<div class="sub-category-list sub-cat-list">
-					<div class="list-group" ng-repeat="subcategory in category.sub_categories">
-						<a type="button" href="/category/{{ subcategory.id }}">{{ subcategory.title }}</a>
-					</div>
 				</div>
+	            <div id="{{ category.id }}" ng-show="show_sub_cat_{{ category.id }}">
+	                <ul ng-repeat="sub_cat in category.sub_categories">
+	                    <li>
+	                        <a href="/category/{{ sub_cat.id }}" class="small">{{ sub_cat.title }}</a>
+	                    </li>
+	                </ul>
+	            </div>
 			</div>
 		</div>
 	</div>
